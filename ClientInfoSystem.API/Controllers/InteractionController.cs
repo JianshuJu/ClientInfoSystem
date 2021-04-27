@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Entities;
+using ApplicationCore.Exceptions;
 using ApplicationCore.Models;
 using ApplicationCore.ServiceInterfaces;
 
@@ -58,6 +59,10 @@ namespace ClientInfoSystem.API.Controllers
         public async Task<IActionResult> GetInteractionsByClient(int clientId)
         {
             var interactions = await _interactionService.GetInteractionsByClient(clientId);
+            if (interactions.Count == 0)
+            {
+                throw new NotFoundException("No matching interaction for this client");
+            }
             return Ok(interactions);
         }
 

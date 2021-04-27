@@ -53,6 +53,13 @@ namespace ApplicationCore.Models
         public string Designation { get; set; }
     }
 
+    public class ErrorResponseModel
+    {
+        public string ExceptionMessage { get; set; }
+        public string ExceptionStackTrace { get; set; }
+        public string InnerExceptionMessage { get; set; }
+    }
+
     //public class LoginResponseModel
     //{
     //    public int Id { get; set; }

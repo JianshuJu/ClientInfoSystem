@@ -20,6 +20,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
+using ClientInfoSystem.API.Middlewares;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 
@@ -69,6 +70,8 @@ namespace ClientInfoSystem.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ClientInfoSystem.API v1"));
             }
+
+            app.UseClientInfoSystemExceptionMiddleware();
 
             app.UseCors(builder =>
             {
